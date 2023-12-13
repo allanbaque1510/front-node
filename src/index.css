@@ -1,0 +1,103 @@
+:root {
+    --Background-nav: #192429;
+    --body: #343c42;
+    --color-texto: #333;
+    --button-primary:rgb(17, 49, 78);
+    --text-primary:white;
+    --text-secundary:rgb(3, 173, 196);
+    --button-form: rgb(56, 84, 126);
+  }
+body{
+    color: var(--text-primary);
+    background-color: var(--body);
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    flex: 1;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secundary);
+    background-color: var(--Background-nav);
+}
+nav section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.log-reg a{
+    display: flex;
+    align-items: center;
+    padding-inline: 5px;
+    text-decoration: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    background-color: var(--button-primary);
+    margin-inline: 10px;
+    height: 70%;
+    border-radius: .5rem;
+}
+.log-reg a:hover{
+    cursor: pointer;
+}
+.log-reg button{
+    display: flex;
+    align-items: center;
+    padding-inline: 5px;
+    text-decoration: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    background-color: var(--button-primary);
+    margin-inline: 10px;
+    height: 70%;
+    border-radius: .5rem;
+}
+.log-reg button:hover{
+    cursor: pointer;
+}
+.form_reg_log{
+    font-size: 2rem;
+    background-color: #9ec4db3f;
+    outline: 1px solid rgba(59, 80, 94, 0.74);
+    border-radius: 20px;
+    padding-block: 20px;
+    padding-inline: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form_reg_log input{
+    font-size: 1.5rem;
+    width: 250px;
+    padding: 3px;
+    margin-left: 10px;
+    border: 1px solid rgba(136, 208, 250, 0.712);
+    border-radius: 5px;
+    margin-block: 14px;
+}
+.form_reg_log button{
+    
+    padding-block: 4px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-inline: 10px;
+    font-size: 2rem;
+    color: var(--text-primary);
+    border: 1px solid rgb(111, 123, 175);
+    background-color: var(--button-form);
+}
+.form_reg_log label{
+    display: flex;
+    align-items: center;
+}
