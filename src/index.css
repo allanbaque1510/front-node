@@ -1,11 +1,12 @@
 :root {
-    --Background-nav: #192429;
-    --body: #343c42;
+    --Background-nav: #ffffff;
+    --body: #ffffff;
     --color-texto: #333;
-    --button-primary:rgb(17, 49, 78);
-    --text-primary:white;
-    --text-secundary:rgb(3, 173, 196);
-    --button-form: rgb(56, 84, 126);
+    --button-primary:rgb(211, 50, 90);
+    --text-primary:rgb(0, 0, 0);
+    --text-secundary:rgb(0, 0, 0);
+    --button-form: rgb(155, 25, 75);
+    --text-button:white;
   }
 body{
     color: var(--text-primary);
@@ -40,7 +41,7 @@ nav section{
     text-decoration: none;
     border: none;
     font-size: 1.2rem;
-    color: var(--text-primary);
+    color: var(--text-button);
     background-color: var(--button-primary);
     margin-inline: 10px;
     height: 70%;
@@ -56,7 +57,7 @@ nav section{
     text-decoration: none;
     border: none;
     font-size: 1.2rem;
-    color: var(--text-primary);
+    color: var(--text-button);
     background-color: var(--button-primary);
     margin-inline: 10px;
     height: 70%;
@@ -67,8 +68,8 @@ nav section{
 }
 .form_reg_log{
     font-size: 2rem;
-    background-color: #9ec4db3f;
-    outline: 1px solid rgba(59, 80, 94, 0.74);
+    background-color: #a3d7fa3f;
+    outline: 1px solid rgb(250, 248, 248);
     border-radius: 20px;
     padding-block: 20px;
     padding-inline: 60px;
@@ -93,11 +94,72 @@ nav section{
     border-bottom-right-radius: 10px;
     padding-inline: 10px;
     font-size: 2rem;
-    color: var(--text-primary);
-    border: 1px solid rgb(111, 123, 175);
+    color: var(--text-button);
+    border: 1px solid rgb(175, 111, 125);
     background-color: var(--button-form);
 }
 .form_reg_log label{
     display: flex;
     align-items: center;
+}
+
+.galeria{
+    columns: 4 300px;
+    column-gap: .5em;
+    transition: all 0.3s ease;
+}
+.galeria span{
+    margin-bottom: .5em;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.galeria span .overlay{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    border-radius: 20px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 0.3s ease;
+}
+.galeria span:hover .overlay {
+    opacity: 1; /* Mostrar el overlay al pasar el mouse */
+  }
+.galeria img{
+    max-width: 100%;
+    border-radius: 20px;
+    display:block;
+}
+.overlay button{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    margin-top: auto; 
+    padding: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.726);
+    border-radius: 50%;
+    margin-inline: 5px;
+    margin-bottom: 10px;
+}
+.overlay a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    margin-top: auto; 
+    padding: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.726);
+    border-radius: 50%;
+    margin-inline: 5px;
+    margin-bottom: 10px;
 }

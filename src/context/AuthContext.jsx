@@ -1,6 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import {registerRequest, loginRequest,verifyToken} from '../api/auth'
+import {uploadImage, modifyImage,viewAllImage} from '../api/image'
 import Cookies from 'js-cookie'
+
 export const AuthContext = createContext()
 
 export const useAuth = ()=>{
@@ -13,10 +15,13 @@ export const useAuth = ()=>{
 
 export const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
+    const [imagenes,setImagenes] = useState(null)
     const [errors,setErrors] = useState([])
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [loading, setLoading] = useState(true)
     
+    
+    //Manejo de registro y autenticacion de usuarios 
     const singup = async(user) =>{
         try {
             const res = await registerRequest(user);
@@ -54,6 +59,33 @@ export const AuthProvider = ({children}) => {
         setUser(null)
         setIsAuthenticated(false)
     }
+
+//--------------Manejo de imagenes 
+    const subirImagen = async(image) =>{
+        try {
+            const res = await uploadImage(image);
+            console.log(res)
+            verTodasLasImagenes()
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const verTodasLasImagenes = async() =>{
+        try {
+            const res = await viewAllImage();
+     
+            setImagenes(res.data)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+
+//--------Use Effect para verificacion de datos
     useEffect(() => {
       if(errors.length >0){
         const timer = setTimeout(() => {
@@ -103,6 +135,9 @@ export const AuthProvider = ({children}) => {
             singup,
             signin,
             logOut,
+            subirImagen,
+            verTodasLasImagenes,
+            imagenes,
             loading,
             user,
             isAuthenticated,

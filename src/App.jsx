@@ -6,13 +6,12 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
 import ProtectedRoute from './ProtectedRoute'
-import NavBar from './pages/NavBar'
+import NavBar from './components/NavBar'
 import './index.css'
 function App() {
   return (
     <AuthProvider>
       <NavBar>
-
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Inicio/>} />

@@ -1,11 +1,12 @@
 import React,{ useState } from 'react'
 import { FcLock,FcFeedback  } from "react-icons/fc";
+import {  useNavigate} from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [data, setData] = useState({email:"",password:""})
-  const {signin,isAuthenticated, errors:AuthErrors}=useAuth();
-
+  const {signin, errors:AuthErrors}=useAuth();
+  const navigate = useNavigate()
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setData({
@@ -16,6 +17,8 @@ const Login = () => {
   const iniciarSesion=(e) =>{
     e.preventDefault()
     signin(data);
+    navigate('/')
+    
   }
   
   return (

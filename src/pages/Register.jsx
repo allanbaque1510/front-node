@@ -1,21 +1,24 @@
 import React,{ useState } from 'react'
 import { FcLock,FcManager,FcFeedback   } from "react-icons/fc";
 import { useAuth } from '../context/AuthContext';
-
+import { useNavigate} from 'react-router-dom'
 const Register = () => {
   const [data, setData] = useState({email:"",password:"",firstName:""})
-  const {singup,isAuthenticated, errors:AuthErrors}=useAuth();
+  const {singup, errors:AuthErrors}=useAuth();
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setData({
-      ...data,
-      [name]: value,
+        ...data,
+        [name]: value,
     });
+    
   };
   const iniciarSesion=(e) =>{
     e.preventDefault()
     singup(data)
+    navigate('/')
   }
 
 
