@@ -4,9 +4,10 @@ import { AuthProvider } from './context/AuthContext'
 import Inicio from './pages/Inicio'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Profile from './pages/Profile'
 import ProtectedRoute from './ProtectedRoute'
 import NavBar from './components/NavBar'
+import Upload from './pages/Upload'
+import DetailsImage from './pages/DetailsImage'
 import './index.css'
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
             <Route path='/' element={<Inicio/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/registro' element={<Register/>} />
+            <Route path='/img/:id' element={<DetailsImage/>} />
             
             <Route element={<ProtectedRoute/>}>
-              <Route path='/profile' element={<Profile/>} />
+              <Route path='/upload' element={<Upload/>} />
             </Route>
           </Routes>
         </BrowserRouter>

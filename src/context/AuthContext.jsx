@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import {registerRequest, loginRequest,verifyToken} from '../api/auth'
-import {uploadImage, modifyImage,viewAllImage} from '../api/image'
+import {uploadImage,viewAllImage,viewImage} from '../api/image'
 import Cookies from 'js-cookie'
 
 export const AuthContext = createContext()
@@ -16,6 +16,7 @@ export const useAuth = ()=>{
 export const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
     const [imagenes,setImagenes] = useState(null)
+    const [imagen,setImagen] = useState(null)
     const [errors,setErrors] = useState([])
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [loading, setLoading] = useState(true)
@@ -65,8 +66,17 @@ export const AuthProvider = ({children}) => {
         try {
             const res = await uploadImage(image);
             console.log(res)
-            verTodasLasImagenes()
+
             
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const verImagen = async(image) =>{
+        try {
+            const res = await viewImage(image);
+            setImagen(res.data)
+            console.log(res.data)
         } catch (error) {
             console.log(error)
         }
@@ -137,7 +147,9 @@ export const AuthProvider = ({children}) => {
             logOut,
             subirImagen,
             verTodasLasImagenes,
+            verImagen,
             imagenes,
+            imagen,
             loading,
             user,
             isAuthenticated,

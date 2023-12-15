@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext';
-
+import { BsCloudUpload } from "react-icons/bs";
+import { useNavigate} from 'react-router-dom'
 const AddImage = () => {
     const {subirImagen,user}=useAuth();
     const [imagen64, setImagen64] = useState("")
+    const inputRef = useRef(null)
+    const navigate = useNavigate()
     const [data, setData] = useState({
       imagen:null,
       titulo:"",
       usuario:""
     })
+   
 
     useEffect(() => {
         if(user){
@@ -52,14 +56,41 @@ const AddImage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data)
         subirImagen(data);
+        navigate('/')
       };
+      const clickReferencia = () =>{
+        inputRef.current.click();
+      }
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={data.titulo} onChange={handleInputChange} name="titulo"  />
-      <input type="file" name="imagen"  accept="image/*" onChange={handleInputChange} /> 
+    <form className="contentImage" onSubmit={handleSubmit}>
+     
+     <div className='subirImagen'>
+
+    
+      {(data.imagen== (undefined || null ))? null:(data.imagen.length > 0?
+      <>
+      <div className="flex">
+        <label htmlFor="titulo" >Titulo de la imagen
+          <input type="text" value={data.titulo} onChange={handleInputChange} name="titulo"  />
+        </label>
       <button type="submit">Enviar</button>
+      </div>
+      <img className="vistaPrevia" src={imagen64} alt="upload" />
+      </>
+      :
+      <div className="uploadImage" onClick={clickReferencia}>
+         
+              <BsCloudUpload />
+           
+           <label>
+            Subir imagen
+           </label>
+        </div>
+      )}
+
+      </div>
+      <input type="file" name="imagen" style={{display:"none"}} accept="image/*" ref={inputRef} onChange={handleInputChange} /> 
     </form>
   )
 }
